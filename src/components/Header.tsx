@@ -27,20 +27,20 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b px-5 sm:px-8 bg-white/85 backdrop-blur-xl backdrop-saturate-150 transition-colors duration-300 ${
+      className={`sticky top-0 z-50 border-b bg-white/85 px-6 sm:px-10 backdrop-blur-xl backdrop-saturate-150 transition-colors duration-300 ${
         scrolled || open ? "border-line" : "border-transparent"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between">
+      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between">
         <a href="#top" aria-label="BharatGrid Systems — back to top" onClick={() => setOpen(false)}>
           <Logo />
         </a>
 
         <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-9">
+          <ul className="flex items-center gap-10">
             {NAV.map((item) => (
               <li key={item.href}>
-                <a href={item.href} className="text-[14px] text-ink/75 transition-colors hover:text-navy">
+                <a href={item.href} className="text-[14px] text-ink/70 transition-colors hover:text-navy">
                   {item.label}
                 </a>
               </li>
@@ -75,7 +75,7 @@ export function Header() {
         id="mobile-nav"
         aria-label="Menu"
         hidden={!open}
-        className="-mx-5 border-t border-line bg-white px-5 pb-6 pt-2 sm:-mx-8 sm:px-8 md:hidden"
+        className="-mx-6 border-t border-line bg-white px-6 pb-8 pt-2 sm:-mx-10 sm:px-10 md:hidden"
       >
         <ul>
           {NAV.map((item) => (

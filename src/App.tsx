@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { company, isSet } from "./company";
+import { company } from "./company";
 import { About } from "./components/About";
 import { Businesses } from "./components/Businesses";
-import { CompanyInfo } from "./components/CompanyInfo";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -46,12 +45,20 @@ const structuredData = () =>
     legalName: company.legalName,
     url: company.url,
     logo: `${company.url}/apple-touch-icon.png`,
-    founder: { "@type": "Person", name: company.founder.name, jobTitle: company.founder.role },
-    ...(isSet(company.email) && { email: company.email }),
-    ...(isSet(company.phone) && { telephone: company.phone }),
-    ...(isSet(company.registeredOffice) && {
-      address: { "@type": "PostalAddress", streetAddress: company.registeredOffice.replace(/\n/g, ", "), addressCountry: "IN" },
-    }),
+    foundingDate: String(company.registeredYear),
+    email: company.email,
+    telephone: company.phone,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: company.registeredOffice[0],
+      addressLocality: "SAS Nagar",
+      addressRegion: "Punjab",
+      postalCode: "160062",
+      addressCountry: "IN",
+    },
+    founder: { "@type": "Person", name: company.leaders[0].name },
+    member: company.leaders.map((p) => ({ "@type": "Person", name: p.name, jobTitle: p.role })),
+    brand: { "@type": "Brand", name: "Resku", url: company.reskuUrl },
   }).replace(/</g, "\\u003c");
 
 export default function App() {
@@ -71,7 +78,6 @@ export default function App() {
         <About />
         <Businesses />
         <Leadership />
-        <CompanyInfo />
         <Contact />
       </main>
       <Footer />

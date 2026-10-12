@@ -1,4 +1,5 @@
-import { Reveal, TriRule } from "./ui";
+import { IMAGES } from "../images";
+import { Photo, Reveal, TriRule } from "./ui";
 
 const FOCUS = [
   {
@@ -17,32 +18,32 @@ const FOCUS = [
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="px-5 pb-20 pt-20 sm:px-8 md:pb-28 md:pt-32">
+    <section aria-labelledby="hero-title" className="px-6 pb-28 pt-24 sm:px-10 md:pb-40 md:pt-36 lg:pt-44">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <TriRule />
-          <p className="mt-6 text-[13px] font-semibold uppercase tracking-[0.14em] text-navy">
+          <p className="mt-8 text-[13px] font-semibold uppercase tracking-[0.16em] text-navy">
             BharatGrid Systems Private Limited
           </p>
         </Reveal>
         <Reveal delay={80}>
           <h1
             id="hero-title"
-            className="mt-6 max-w-4xl text-[clamp(2.6rem,7vw,5.25rem)] font-semibold leading-[1.03] tracking-[-0.035em]"
+            className="mt-8 max-w-4xl text-[clamp(2.75rem,7vw,5.5rem)] font-semibold leading-[1.02] tracking-[-0.038em]"
           >
             Building technology for a safer, smarter India.
           </h1>
         </Reveal>
         <Reveal delay={160}>
-          <p className="mt-8 max-w-2xl text-[clamp(1.075rem,1.6vw,1.3rem)] leading-relaxed text-muted">
+          <p className="mt-10 max-w-2xl text-[clamp(1.1rem,1.6vw,1.35rem)] leading-[1.65] text-body">
             BharatGrid Systems Private Limited is an Indian technology company developing software products and
             digital solutions for everyday safety, mobility, and business operations.
           </p>
         </Reveal>
-        <Reveal delay={240} className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <Reveal delay={240} className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-5">
           <a
             href="#businesses"
-            className="group inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3.5 text-[15px] font-medium text-white transition-colors hover:bg-[#13286b]"
+            className="group inline-flex items-center gap-2.5 rounded-full bg-navy px-7 py-4 text-[15px] font-medium text-white transition-colors hover:bg-navy-hover"
           >
             Explore Our Work
             <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-0.5">
@@ -53,12 +54,23 @@ export function Hero() {
             Contact us
           </a>
         </Reveal>
+      </div>
 
-        <ul className="mt-24 grid gap-10 border-t border-line pt-10 md:mt-32 md:grid-cols-3 md:gap-12">
+      <Reveal as="figure" delay={120} className="mx-auto mt-24 max-w-[1320px] md:mt-32">
+        <Photo
+          img={IMAGES.seaLink}
+          eager
+          sizes="(min-width: 1400px) 1320px, 100vw"
+          className="aspect-[4/3] rounded-[20px] sm:aspect-[16/9] md:rounded-[28px] lg:aspect-[2.35/1]"
+        />
+      </Reveal>
+
+      <div className="mx-auto max-w-6xl">
+        <ul className="mt-24 grid gap-14 md:mt-32 md:grid-cols-3 md:gap-16">
           {FOCUS.map((f, i) => (
-            <Reveal as="li" key={f.title} delay={i * 90}>
-              <h2 className="text-[15px] font-semibold">{f.title}</h2>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted">{f.text}</p>
+            <Reveal as="li" key={f.title} delay={i * 90} className="border-t border-line pt-8">
+              <h2 className="text-[17px] font-semibold tracking-[-0.01em]">{f.title}</h2>
+              <p className="mt-3 text-[16px] leading-[1.7] text-body">{f.text}</p>
             </Reveal>
           ))}
         </ul>
