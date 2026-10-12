@@ -22,7 +22,7 @@ const PRINCIPLES = [
 
 export function About() {
   return (
-    <Section id="about" eyebrow="About Us" title="Practical technology, built in India.">
+    <Section id="about" tone="mist" eyebrow="About Us" title="Practical technology, built in India.">
       <div className="grid gap-10 text-[clamp(1.05rem,1.4vw,1.2rem)] leading-[1.75] text-body md:grid-cols-2 md:gap-16">
         <Reveal>
           <p>

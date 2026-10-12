@@ -6,7 +6,6 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { Leadership } from "./components/Leadership";
 
 declare global {
   interface Window {
@@ -56,8 +55,6 @@ const structuredData = () =>
       postalCode: "160062",
       addressCountry: "IN",
     },
-    founder: { "@type": "Person", name: company.leaders[0].name },
-    member: company.leaders.map((p) => ({ "@type": "Person", name: p.name, jobTitle: p.role })),
     brand: { "@type": "Brand", name: "Resku", url: company.reskuUrl },
   }).replace(/</g, "\\u003c");
 
@@ -77,7 +74,6 @@ export default function App() {
         <Hero />
         <About />
         <Businesses />
-        <Leadership />
         <Contact />
       </main>
       <Footer />

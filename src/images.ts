@@ -20,6 +20,11 @@ export const IMAGES = {
     credit: "Ashwini Chaudhary (Monty)",
     position: "50% 35%",
   },
+  nightRoad: {
+    id: "photo-1612709940821-088f5509b7c4",
+    alt: "Cars and motorcycles on a city road at night",
+    credit: "Abhijeet Gaikwad",
+  },
   bus: {
     id: "photo-1707158758017-03d2e2a8bbec",
     alt: "A city bus waiting at a stop in the evening",

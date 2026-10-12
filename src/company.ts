@@ -7,10 +7,6 @@ export const company = {
   email: "info@bharatgridsystems.com",
   phone: "+91 95011 59898",
   grievanceEmail: "support@bharatgridsystems.com",
-  leaders: [
-    { name: "Shreshth Kant", role: "Founder & Director" },
-    { name: "Shuchi Sharma", role: "Director" },
-  ],
   motto: "राष्ट्रहित सर्वोपरि",
   url: "https://bharatgridsystems.com",
   reskuUrl: "https://reskuapp.com",
@@ -21,6 +17,5 @@ export const telHref = `tel:${company.phone.replace(/[^\d+]/g, "")}`;
 export const NAV = [
   { href: "#about", label: "About" },
   { href: "#businesses", label: "Businesses" },
-  { href: "#leadership", label: "Leadership" },
   { href: "#contact", label: "Contact" },
 ];
