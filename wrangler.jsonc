@@ -1,0 +1,9 @@
+// BharatGrid Systems corporate site: static assets only, no Worker code.
+// Its own Worker, separate from every Resku project.
+{
+  "name": "bharatgridsystems",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
