@@ -50,7 +50,7 @@ const GLANCE: [string, ReactNode][] = [
   ["Organiser", <>BharatGrid Academy, {fellowship.company}</>],
   ["Duration", <>Six months, January – June 2027</>],
   ["Programme begins", fellowship.begins],
-  ["Intake", <>Ten fellows</>],
+  ["Intake", <>Ten members</>],
   ["Selection", <>Interview only. No CV required.</>],
   ["Outcome", <>Designed to lead to full-time roles at BharatGrid on successful completion</>],
 ];
@@ -87,13 +87,13 @@ const JOURNEY = [
     n: "02",
     title: "Apply",
     when: "April – June 2027",
-    text: "Three months inside BharatGrid’s marketing and sales operations, on real campaigns, clients and commercial work, with a stipend or uncapped commission.",
+    text: "Three months inside BharatGrid’s marketing and sales operations, on real campaigns, clients and commercial work.",
   },
   {
     n: "03",
     title: "Build your career",
     when: "On completion",
-    text: "Fellows who successfully complete the programme are intended to transition into full-time roles at BharatGrid.",
+    text: "Members who successfully complete the programme are intended to transition into full-time roles at BharatGrid.",
   },
 ];
 
@@ -114,27 +114,18 @@ const TEAMS = [
   {
     name: "Marketing Team",
     work: ["Marketing campaigns", "Market research", "Customer acquisition", "Lead generation", "Distribution", "Performance analysis", "Growth operations"],
-    pay: "₹15,000",
-    payNote: "Fixed stipend for the full three-month practical phase.",
-    footnote: null as ReactNode,
+    focus: "Bringing customers to the business, and measuring what works.",
   },
   {
     name: "Sales & Business Development Team",
     work: ["Prospecting", "Real client interactions", "Business development", "Sales meetings", "Follow-ups", "Negotiations", "Commercial conversions"],
-    pay: "Uncapped",
-    payNote: "Performance-based commission, with no fixed stipend.",
-    footnote: (
-      <>
-        High-performing fellows may earn ₹50,000 or more a month in commission. This is neither guaranteed nor typical: earnings depend
-        entirely on actual sales results.
-      </>
-    ),
+    focus: "Turning conversations into clients, and clients into revenue.",
   },
 ];
 
 const ENVIRONMENT = [
   ["Company management", "Both teams work inside BharatGrid, in a structured corporate environment under the company’s management."],
-  ["Clear responsibilities", "Every fellow has defined responsibilities, owned and reviewed as in any professional role."],
+  ["Clear responsibilities", "Every member has defined responsibilities, owned and reviewed as in any professional role."],
   ["Performance expectations", "Work is measured against clear expectations. Results matter."],
 ];
 
@@ -157,7 +148,7 @@ const PROCESS = [
   ["Review", "Applications are reviewed for interview shortlisting."],
   ["Interview", "Shortlisted candidates are invited to interview."],
   ["Selection", "Ten candidates are selected for the inaugural cohort."],
-  ["Begin", `Selected fellows begin the programme on ${fellowship.begins}.`],
+  ["Begin", `Selected members begin the programme on ${fellowship.begins}.`],
 ];
 
 const TIMELINE = [
@@ -180,7 +171,7 @@ function Hero() {
         <Reveal delay={60}>
           <h1
             id="fellowship-title"
-            className="mt-12 font-display text-[clamp(3.3rem,9.6vw,8.6rem)] font-medium leading-[0.92] tracking-[-0.02em] text-ac-charcoal md:mt-14"
+            className="mt-12 font-display text-[clamp(2.75rem,11vw,8.6rem)] md:text-[clamp(3.3rem,9.6vw,8.6rem)] font-medium leading-[0.92] tracking-[-0.02em] text-ac-charcoal md:mt-14"
           >
             Business
             <br />
@@ -208,7 +199,7 @@ function Hero() {
             <Reveal delay={260}>
               <p className="mt-10 max-w-[38rem] border-t border-ac-charcoal/12 pt-6 text-[16px] leading-[1.7] text-ac-slate">
                 Not an internship, and not an online certificate. A selective pathway from training to employment, designed to lead to
-                full-time roles at BharatGrid for fellows who successfully complete it.
+                full-time roles at BharatGrid for members who successfully complete it.
               </p>
             </Reveal>
           </div>
@@ -322,7 +313,7 @@ function Training() {
             Intensive Professional Training
           </Title>
           <p className="mt-8 text-[17px] leading-[1.75] text-ac-charcoal/85">
-            All ten fellows complete approximately 120 hours of structured professional training over three months. The training is built to
+            All ten members complete approximately 120 hours of structured professional training over three months. The training is built to
             develop capability, not just knowledge: every area is taught, practised, evaluated and reviewed.
           </p>
           <div className="mt-10 flex items-baseline gap-4 border-t border-ac-charcoal/15 pt-8">
@@ -357,8 +348,8 @@ function Training() {
           </ol>
           <Reveal className="mt-10 border-l-2 border-ac-crimson pl-6">
             <p className="text-[15.5px] leading-[1.7] text-ac-charcoal/85">
-              This is a demanding programme, and it expects serious commitment. Fellows are held to professional standards from the first week.
-              The detailed curriculum is shared with selected fellows.
+              This is a demanding programme, and it expects serious commitment. Members are held to professional standards from the first week.
+              The detailed curriculum is shared with selected members.
             </p>
           </Reveal>
         </div>
@@ -379,7 +370,7 @@ function Immersion() {
         </Reveal>
         <Reveal delay={100} className="lg:col-span-6">
           <p className="text-[17px] leading-[1.75] text-ac-charcoal/85 lg:mt-12">
-            For the second half of the programme, all ten fellows move into BharatGrid’s working environment. They are divided into two teams
+            For the second half of the programme, all ten members move into BharatGrid’s working environment. They are divided into two teams
             and take on real responsibilities: actual campaigns, actual clients and actual commercial operations. The aim is experience, not
             theory.
           </p>
@@ -402,10 +393,8 @@ function Immersion() {
             </ul>
             <div className="mt-auto pt-10">
               <div className="border-t border-ac-charcoal/15 pt-7">
-                <p className="font-label text-[11.5px] font-semibold uppercase tracking-[0.16em] text-ac-charcoal">Compensation</p>
-                <p className="mt-3 font-display text-[2.6rem] font-medium leading-none text-ac-forest">{t.pay}</p>
-                <p className="mt-3 text-[15px] leading-relaxed text-ac-charcoal/85">{t.payNote}</p>
-                {t.footnote && <p className="mt-4 text-[13.5px] leading-relaxed text-ac-slate">{t.footnote}</p>}
+                <p className="font-label text-[11.5px] font-semibold uppercase tracking-[0.16em] text-ac-charcoal">The focus</p>
+                <p className="mt-3 font-display text-[1.45rem] italic leading-snug text-ac-forest">{t.focus}</p>
               </div>
             </div>
           </Reveal>
@@ -431,7 +420,7 @@ function Employment() {
         <Reveal className="lg:col-span-7">
           <p className="font-label text-[12px] font-semibold uppercase tracking-[0.2em] text-ac-sage">Full-time employment</p>
           <h2 id="employment-title" className="mt-6 font-display text-[clamp(2.6rem,6vw,5.2rem)] font-medium leading-[1] tracking-[-0.015em]">
-            Ten fellows.
+            Ten members.
             <br />
             <span className="italic text-ac-sage">Ten full-time positions.</span>
           </h2>
@@ -439,7 +428,7 @@ function Employment() {
         <Reveal delay={120} className="lg:col-span-5">
           <p className="text-[17px] leading-[1.75] text-white/85">
             The fellowship is designed as a pathway into employment, not a certificate to collect. Upon successful completion of the programme,
-            all ten fellows are intended to transition into full-time roles at BharatGrid.
+            all ten members are intended to transition into full-time roles at BharatGrid.
           </p>
           <div className="mt-10">
             <ApplyButton label="Apply for the Fellowship" variant="light" />
@@ -521,7 +510,7 @@ function Selection() {
           <Reveal delay={80} className="mt-12 grid grid-cols-[auto_1fr] items-center gap-6">
             <span className="font-display text-[5.5rem] font-medium leading-none text-ac-forest">10</span>
             <p className="text-[15.5px] leading-[1.65] text-ac-charcoal/85">
-              The inaugural cohort is limited to ten fellows, and is aimed at final-year BBA students.
+              The inaugural cohort is limited to ten members, and is aimed at final-year BBA students.
             </p>
           </Reveal>
         </div>
@@ -630,7 +619,7 @@ const structuredData = () =>
     "@type": "EducationalOccupationalProgram",
     name: fellowship.name.replace("’", "'"),
     description:
-      "An intensive six-month professional fellowship by BharatGrid Academy: three months of professional training followed by three months of corporate experience in marketing or sales, with full-time roles at BharatGrid for fellows who successfully complete it.",
+      "An intensive six-month professional fellowship by BharatGrid Academy: three months of professional training followed by three months of corporate experience in marketing or sales, with full-time roles at BharatGrid for members who successfully complete it.",
     url: fellowship.url,
     provider: {
       "@type": "Organization",

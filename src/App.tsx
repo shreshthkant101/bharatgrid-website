@@ -1,5 +1,6 @@
 import { company } from "./company";
 import { About } from "./components/About";
+import { AcademySection } from "./components/AcademySection";
 import { Businesses } from "./components/Businesses";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
@@ -45,6 +46,7 @@ export default function App() {
         <Hero />
         <About />
         <Businesses />
+        <AcademySection />
         <Contact />
       </main>
       <Footer />
