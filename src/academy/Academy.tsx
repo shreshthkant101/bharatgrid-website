@@ -183,7 +183,7 @@ function Hero() {
           <div className="lg:col-span-7">
             <Reveal delay={140}>
               <p className="max-w-[38rem] text-[clamp(1.12rem,1.5vw,1.3rem)] leading-[1.65] text-ac-charcoal/85">
-                An intensive six-month fellowship that prepares ten exceptional students for careers in business, marketing, sales and
+                An intensive six-month fellowship that prepares ten exceptional people for careers in business, marketing, sales and
                 business development: rigorous professional training first, then real work inside an operating company.
               </p>
             </Reveal>
@@ -510,7 +510,7 @@ function Selection() {
           <Reveal delay={80} className="mt-12 grid grid-cols-[auto_1fr] items-center gap-6">
             <span className="font-display text-[5.5rem] font-medium leading-none text-ac-forest">10</span>
             <p className="text-[15.5px] leading-[1.65] text-ac-charcoal/85">
-              The inaugural cohort is limited to ten members, and is aimed at final-year BBA students.
+              The inaugural cohort is limited to ten members. It is open to anyone who wants to grow in their career.
             </p>
           </Reveal>
         </div>
