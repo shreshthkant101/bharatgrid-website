@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { APPLICATIONS_CLOSE, APPLY_URL, fellowship } from "./config";
+import { APPLICATIONS_CLOSE, APPLY_URL, BROCHURE, fellowship } from "./config";
 
 interface ApplicationState {
   open: boolean;
@@ -81,6 +81,23 @@ export function ApplyButton({
       {label}
       <Arrow className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
       <span className="sr-only"> (opens the application form in a new tab)</span>
+    </a>
+  );
+}
+
+/** The applicant brochure as a download, for people to save and pass on. */
+export function BrochureButton({ className = "" }: { className?: string }) {
+  return (
+    <a
+      href={BROCHURE.href}
+      download={BROCHURE.file}
+      className={`group inline-flex min-h-[52px] items-center justify-center gap-3 border border-ac-forest/35 px-8 font-label text-[13px] font-semibold uppercase tracking-[0.14em] text-ac-forest transition-colors duration-300 hover:border-ac-forest hover:bg-ac-forest/[0.04] ${className}`}
+    >
+      Download Brochure
+      <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" className="transition-transform duration-300 group-hover:translate-y-0.5">
+        <path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square" />
+      </svg>
+      <span className="sr-only"> ({BROCHURE.size})</span>
     </a>
   );
 }

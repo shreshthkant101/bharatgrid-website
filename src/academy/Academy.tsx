@@ -4,7 +4,7 @@ import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Reveal } from "../components/ui";
 import { useReveal } from "../reveal";
-import { ApplicationsProvider, ApplyButton, Deadline, HeaderApply } from "./apply";
+import { ApplicationsProvider, ApplyButton, BrochureButton, Deadline, HeaderApply } from "./apply";
 import { APPLY_URL, fellowship } from "./config";
 
 /* ---------------------------------------------------------------- pieces */
@@ -188,11 +188,9 @@ function Hero() {
               </p>
             </Reveal>
             <Reveal delay={200} className="mt-10">
-              <div className="flex flex-wrap items-center gap-x-8 gap-y-5">
-                <ApplyButton />
-                <a href="#programme" className="font-label text-[13px] font-semibold uppercase tracking-[0.14em] text-ac-forest underline decoration-ac-forest/30 underline-offset-[6px] hover:decoration-ac-forest">
-                  The programme
-                </a>
+              <div className="flex flex-wrap items-center gap-4">
+                <ApplyButton className="w-full sm:w-auto" />
+                <BrochureButton className="w-full sm:w-auto" />
               </div>
               <Deadline className="mt-6" />
             </Reveal>
