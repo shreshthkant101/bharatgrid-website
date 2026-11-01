@@ -48,7 +48,7 @@ const Rule = ({ className = "" }: { className?: string }) => <div aria-hidden="t
 
 const GLANCE: [string, ReactNode][] = [
   ["Organiser", <>BharatGrid Academy, {fellowship.company}</>],
-  ["Duration", <>Six months, January – June 2027</>],
+  ["Duration", <>24 weeks, January – June 2027</>],
   ["Programme begins", fellowship.begins],
   ["Intake", <>Ten members</>],
   ["Selection", <>Interview only. No CV required.</>],
@@ -68,7 +68,7 @@ const NUMBERS: { value: ReactNode; label: string }[] = [
   {
     value: (
       <>
-        6<span className="text-[0.42em] italic"> months</span>
+        24<span className="text-[0.42em] italic"> weeks</span>
       </>
     ),
     label: "Intensive programme",
@@ -81,13 +81,13 @@ const JOURNEY = [
     n: "01",
     title: "Learn",
     when: "January – March 2027",
-    text: "Three months of intensive professional training: around 120 hours of structured sessions, practical exercises, simulations and evaluations.",
+    text: "12 weeks of intensive professional training: around 120 hours of structured sessions, practical exercises, simulations and evaluations.",
   },
   {
     n: "02",
     title: "Apply",
     when: "April – June 2027",
-    text: "Three months inside BharatGrid’s marketing and sales operations, on real campaigns, clients and commercial work.",
+    text: "12 weeks inside BharatGrid’s marketing and sales operations, on real campaigns, clients and commercial work.",
   },
   {
     n: "03",
@@ -183,7 +183,7 @@ function Hero() {
           <div className="lg:col-span-7">
             <Reveal delay={140}>
               <p className="max-w-[38rem] text-[clamp(1.12rem,1.5vw,1.3rem)] leading-[1.65] text-ac-charcoal/85">
-                An intensive six-month fellowship that prepares ten exceptional people for careers in business, marketing, sales and
+                An intensive 24-week fellowship that prepares ten exceptional people for careers in business, marketing, sales and
                 business development: rigorous professional training first, then real work inside an operating company.
               </p>
             </Reveal>
@@ -284,7 +284,7 @@ function Journey() {
       <Reveal>
         <Label>The programme</Label>
         <Title id="programme-title" className="mt-6 max-w-3xl">
-          Six months. Three stages. One direction.
+          24 weeks. Three stages. One direction.
         </Title>
       </Reveal>
       <ol className="mt-16 grid gap-12 md:mt-24 md:grid-cols-3 md:gap-10">
@@ -313,7 +313,7 @@ function Training() {
             Intensive Professional Training
           </Title>
           <p className="mt-8 text-[17px] leading-[1.75] text-ac-charcoal/85">
-            All ten members complete approximately 120 hours of structured professional training over three months. The training is built to
+            All ten members complete approximately 120 hours of structured professional training over 12 weeks. The training is built to
             develop capability, not just knowledge: every area is taught, practised, evaluated and reviewed.
           </p>
           <div className="mt-10 flex items-baseline gap-4 border-t border-ac-charcoal/15 pt-8">
@@ -321,7 +321,7 @@ function Training() {
             <span className="font-label text-[11.5px] font-semibold uppercase leading-relaxed tracking-[0.16em] text-ac-slate">
               hours of structured
               <br />
-              training over 3 months
+              training over 12 weeks
             </span>
           </div>
           <ul className="mt-8 flex flex-wrap gap-x-3 gap-y-2 text-[14px] text-ac-charcoal/80">
@@ -619,14 +619,14 @@ const structuredData = () =>
     "@type": "EducationalOccupationalProgram",
     name: fellowship.name.replace("’", "'"),
     description:
-      "An intensive six-month professional fellowship by BharatGrid Academy: three months of professional training followed by three months of corporate experience in marketing or sales, with full-time roles at BharatGrid for members who successfully complete it.",
+      "An intensive 24-week professional fellowship by BharatGrid Academy: 12 weeks of professional training followed by 12 weeks of corporate experience in marketing or sales, with full-time roles at BharatGrid for members who successfully complete it.",
     url: fellowship.url,
     provider: {
       "@type": "Organization",
       name: "BharatGrid Academy",
       parentOrganization: { "@type": "Organization", name: company.legalName, url: company.url },
     },
-    timeToComplete: "P6M",
+    timeToComplete: "P24W",
     startDate: "2027-01-01",
     applicationDeadline: "2026-11-30",
     maximumEnrollment: fellowship.selections,

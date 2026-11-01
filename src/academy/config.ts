@@ -15,7 +15,7 @@ export const fellowship = {
   closes: "30 November 2026",
   closesTime: "11:59 PM IST",
   begins: "1 January 2027",
-  duration: "6 months",
+  duration: "24 weeks",
   selections: 10,
   hires: 10,
   target: "1,000+",

@@ -3,7 +3,7 @@ import { APPLY_URL, fellowship } from "../academy/config";
 import { Reveal } from "./ui";
 
 const FACTS: [string, string][] = [
-  ["Duration", "Six months, from 1 January 2027"],
+  ["Duration", "24 weeks, from 1 January 2027"],
   ["Intake", "Ten members"],
   ["Outcome", "Ten full-time positions at BharatGrid"],
   ["Applications close", `${fellowship.closes}, ${fellowship.closesTime}`],
@@ -35,7 +35,7 @@ export function AcademySection() {
                   Business Fellowship <span className="italic text-ac-sage">’27</span>
                 </h3>
                 <p className="mt-7 max-w-xl text-[17px] leading-[1.75] text-white/85">
-                  A selective six-month fellowship for ten members: three months of intensive professional training, then three months of
+                  A selective 24-week fellowship for ten members: 12 weeks of intensive professional training, then 12 weeks of
                   real marketing and sales work inside BharatGrid. It is designed to lead to full-time roles for members who successfully
                   complete it. Selection is by interview, with no CV required.
                 </p>
