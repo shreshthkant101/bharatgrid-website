@@ -14,8 +14,17 @@ export const company = {
 
 export const telHref = `tel:${company.phone.replace(/[^\d+]/g, "")}`;
 
-export const NAV = [
-  { href: "#about", label: "About" },
-  { href: "#businesses", label: "Businesses" },
-  { href: "#contact", label: "Contact" },
+export type Page = "home" | "academy";
+
+// Relative links, so the same build works at the domain root and on the
+// github.io project path; "./#about" is a same-page scroll on the home page and
+// a link home from /academy.
+export const NAV: { href: string; label: string; page?: Page }[] = [
+  { href: "./#about", label: "About" },
+  { href: "./#businesses", label: "Businesses" },
+  { href: "./academy", label: "Academy", page: "academy" },
+  { href: "./#contact", label: "Contact" },
 ];
+
+/** Where the logo goes: the top of the home page, or home from elsewhere. */
+export const homeHref = (page: Page) => (page === "home" ? "#top" : "./");

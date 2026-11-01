@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { NAV } from "../company";
+import { useEffect, useState, type ReactNode } from "react";
+import { homeHref, NAV, type Page } from "../company";
 import { Logo } from "./ui";
 
-export function Header() {
+/** `action`: a page's own call to action, kept in reach in the sticky header. */
+export function Header({ page = "home", action }: { page?: Page; action?: ReactNode }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -32,25 +33,36 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between">
-        <a href="#top" aria-label="BharatGrid Systems — back to top" onClick={() => setOpen(false)}>
+        <a
+          href={homeHref(page)}
+          aria-label={page === "home" ? "BharatGrid Systems — back to top" : "BharatGrid Systems — home"}
+          onClick={() => setOpen(false)}
+        >
           <Logo />
         </a>
 
-        <nav aria-label="Primary" className="hidden md:block">
-          <ul className="flex items-center gap-10">
-            {NAV.map((item) => (
-              <li key={item.href}>
-                <a href={item.href} className="text-[14px] text-ink/70 transition-colors hover:text-navy">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <div className="ml-auto flex items-center gap-10">
+          <nav aria-label="Primary" className="hidden md:block">
+            <ul className="flex items-center gap-10">
+              {NAV.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    aria-current={item.page === page ? "page" : undefined}
+                    className="text-[14px] text-ink/70 transition-colors hover:text-navy aria-[current=page]:font-medium aria-[current=page]:text-ink"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          {action}
+        </div>
 
         <button
           type="button"
-          className="-mr-2 flex h-10 w-10 items-center justify-center md:hidden"
+          className="-mr-2 ml-3 flex h-10 w-10 items-center justify-center md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -80,7 +92,12 @@ export function Header() {
         <ul>
           {NAV.map((item) => (
             <li key={item.href} className="border-b border-line last:border-b-0">
-              <a href={item.href} onClick={() => setOpen(false)} className="block py-4 text-[17px] text-ink">
+              <a
+                href={item.href}
+                aria-current={item.page === page ? "page" : undefined}
+                onClick={() => setOpen(false)}
+                className="block py-4 text-[17px] text-ink aria-[current=page]:font-medium"
+              >
                 {item.label}
               </a>
             </li>

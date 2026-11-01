@@ -15,6 +15,18 @@
   --color-resku-soft: #e9f3f1;
   --color-saffron: #f26a21;
   --color-green: #0b6b3a;
+
+  /* BharatGrid Academy (/academy) */
+  --font-display: "Bodoni Moda Variable", "Bodoni Moda", "Bodoni 72", Didot, "Times New Roman", serif;
+  --font-label: "Montserrat Variable", "Montserrat", "Inter Variable", -apple-system, "Segoe UI", sans-serif;
+  --color-ac-emerald: #2e7d68;
+  --color-ac-forest: #1e5b4b;
+  --color-ac-sage: #dcebe5;
+  --color-ac-crimson: #c4413b;
+  --color-ac-charcoal: #1f2933;
+  --color-ac-slate: #667085;
+  --color-ac-warm: #fafbf9;
+  --color-ac-grey: #f2f5f3;
 }
 
 @layer base {

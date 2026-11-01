@@ -1,0 +1,24 @@
+// BharatGrid Academy — the one place for the application link and the dates.
+// Change the form or the deadline here; every button on /academy follows.
+
+/** The application form (Google Forms handles every submission). */
+export const APPLY_URL = "https://forms.gle/5BiLtPLmQt1CoPUi9";
+
+/** Applications close at 11:59 PM IST on 30 November 2026 (IST is UTC+05:30).
+ *  After this instant every Apply button becomes an "Applications closed" state. */
+export const APPLICATIONS_CLOSE = new Date("2026-11-30T23:59:59+05:30");
+
+export const fellowship = {
+  name: "Business Fellowship ’27",
+  organiser: "BharatGrid Academy",
+  company: "BharatGrid Systems Pvt. Ltd.",
+  closes: "30 November 2026",
+  closesTime: "11:59 PM IST",
+  begins: "1 January 2027",
+  duration: "6 months",
+  selections: 10,
+  hires: 10,
+  target: "1,000+",
+  trainingHours: 120,
+  url: "https://bharatgridsystems.com/academy",
+} as const;

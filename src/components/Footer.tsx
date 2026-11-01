@@ -1,19 +1,27 @@
-import { company, NAV } from "../company";
+import { company, homeHref, NAV, type Page } from "../company";
 import { Logo } from "./ui";
 
-export function Footer() {
+export function Footer({ page = "home" }: { page?: Page }) {
   return (
     <footer className="bg-white px-6 pb-12 pt-20 sm:px-10 md:pt-24">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-10 md:flex-row md:items-center md:justify-between">
-          <a href="#top" aria-label="BharatGrid Systems — back to top" className="self-start">
+          <a
+            href={homeHref(page)}
+            aria-label={page === "home" ? "BharatGrid Systems — back to top" : "BharatGrid Systems — home"}
+            className="self-start"
+          >
             <Logo />
           </a>
           <nav aria-label="Footer">
             <ul className="flex flex-wrap gap-x-9 gap-y-3">
               {NAV.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href} className="text-[14px] text-ink/70 transition-colors hover:text-navy">
+                  <a
+                    href={item.href}
+                    aria-current={item.page === page ? "page" : undefined}
+                    className="text-[14px] text-ink/70 transition-colors hover:text-navy"
+                  >
                     {item.label}
                   </a>
                 </li>
