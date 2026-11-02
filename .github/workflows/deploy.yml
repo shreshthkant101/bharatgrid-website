@@ -1,8 +1,8 @@
 name: Deploy to GitHub Pages
 
+# The live site is bharatgridsystems.com on Cloudflare (`npm run deploy`). A second copy on github.io is duplicate
+# content for search engines, so this no longer runs on every push; it can still be run by hand.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

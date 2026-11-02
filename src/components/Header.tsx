@@ -1,57 +1,31 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { homeHref, NAV, type Page } from "../company";
-import { Logo } from "./ui";
+import type { ReactNode } from "react";
+import { NAV, type Page } from "../company";
+import { Container, Logo } from "./ui";
 
-/** `action`: a page's own call to action, kept in reach in the sticky header. */
+/** Markup only: the menu toggle and the scrolled border are added by src/site/client.ts on every page.
+ *  `action`: a page's own call to action, kept in reach in the sticky header. */
 export function Header({ page = "home", action }: { page?: Page; action?: ReactNode }) {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
-    const onResize = () => window.innerWidth >= 768 && setOpen(false);
-    window.addEventListener("keydown", onKey);
-    window.addEventListener("resize", onResize);
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("resize", onResize);
-    };
-  }, [open]);
-
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-white/85 px-6 sm:px-10 backdrop-blur-xl backdrop-saturate-150 transition-colors duration-300 ${
-        scrolled || open ? "border-line" : "border-transparent"
-      }`}
+      data-header=""
+      className="group sticky top-0 z-50 border-b border-transparent bg-paper/90 backdrop-blur-xl backdrop-saturate-150 transition-colors duration-300 data-[open]:border-line data-[scrolled]:border-line"
     >
-      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between">
-        <a
-          href={homeHref(page)}
-          aria-label={page === "home" ? "BharatGrid Systems — back to top" : "BharatGrid Systems — home"}
-          onClick={() => setOpen(false)}
-        >
+      <Container className="flex h-[72px] items-center justify-between">
+        <a href="/" aria-label="BharatGrid Systems home" aria-current={page === "home" ? "page" : undefined}>
           <Logo />
         </a>
 
-        <div className="ml-auto flex items-center gap-10">
-          <nav aria-label="Primary" className="hidden md:block">
-            <ul className="flex items-center gap-10">
+        <div className="ml-auto flex items-center gap-8">
+          <nav aria-label="Primary" className="hidden lg:block">
+            <ul className="flex items-center gap-8">
               {NAV.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
                     aria-current={item.page === page ? "page" : undefined}
-                    className="text-[14px] text-ink/70 transition-colors hover:text-navy aria-[current=page]:font-medium aria-[current=page]:text-ink"
+                    className="text-[14px] text-ink/70 transition-colors hover:text-ink aria-[current=page]:font-medium aria-[current=page]:text-ink"
                   >
-                    {item.label}
+                    {item.short ?? item.label}
                   </a>
                 </li>
               ))}
@@ -62,47 +36,31 @@ export function Header({ page = "home", action }: { page?: Page; action?: ReactN
 
         <button
           type="button"
-          className="-mr-2 ml-3 flex h-10 w-10 items-center justify-center md:hidden"
-          aria-expanded={open}
+          data-menu-button=""
+          className="-mr-2 ml-3 flex h-10 w-10 items-center justify-center lg:hidden"
+          aria-expanded="false"
           aria-controls="mobile-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
+          aria-label="Open menu"
         >
           <span className="relative block h-3 w-[18px]">
-            <span
-              className={`absolute left-0 h-[1.5px] w-full bg-ink transition-transform duration-300 ${
-                open ? "top-[5px] rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute left-0 h-[1.5px] w-full bg-ink transition-transform duration-300 ${
-                open ? "top-[5px] -rotate-45" : "top-[10px]"
-              }`}
-            />
+            <span className="absolute left-0 top-0 h-[1.5px] w-full bg-ink transition-transform duration-300 group-data-[open]:top-[5px] group-data-[open]:rotate-45" />
+            <span className="absolute left-0 top-[10px] h-[1.5px] w-full bg-ink transition-transform duration-300 group-data-[open]:top-[5px] group-data-[open]:-rotate-45" />
           </span>
         </button>
-      </div>
+      </Container>
 
-      <nav
-        id="mobile-nav"
-        aria-label="Menu"
-        hidden={!open}
-        className="-mx-6 border-t border-line bg-white px-6 pb-8 pt-2 sm:-mx-10 sm:px-10 md:hidden"
-      >
-        <ul>
-          {NAV.map((item) => (
-            <li key={item.href} className="border-b border-line last:border-b-0">
-              <a
-                href={item.href}
-                aria-current={item.page === page ? "page" : undefined}
-                onClick={() => setOpen(false)}
-                className="block py-4 text-[17px] text-ink aria-[current=page]:font-medium"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <nav id="mobile-nav" aria-label="Menu" hidden className="border-t border-line bg-paper lg:hidden">
+        <Container>
+          <ul className="pb-8 pt-2">
+            {NAV.map((item) => (
+              <li key={item.href} className="border-b border-line last:border-b-0">
+                <a href={item.href} aria-current={item.page === page ? "page" : undefined} className="block py-4 text-[17px] text-ink aria-[current=page]:font-medium">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </nav>
     </header>
   );

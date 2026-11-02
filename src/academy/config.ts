@@ -11,7 +11,7 @@ export const APPLICATIONS_CLOSE = new Date("2026-11-30T23:59:59+05:30");
 /** The applicant brochure, served from public/. Replace the PDF there to update it;
  *  `file` is the name it saves under when someone downloads it to share. */
 export const BROCHURE = {
-  href: "./business-fellowship-27-brochure.pdf",
+  href: "/business-fellowship-27-brochure.pdf",
   file: "BharatGrid-Academy-Business-Fellowship-27-Brochure.pdf",
   size: "PDF · 0.7 MB",
 } as const;

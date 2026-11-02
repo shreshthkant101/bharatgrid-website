@@ -3,7 +3,7 @@ import { company } from "../company";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import { Reveal } from "../components/ui";
-import { useReveal } from "../reveal";
+import { IDS } from "../site/schema";
 import { ApplicationsProvider, ApplyButton, BrochureButton, Deadline, HeaderApply } from "./apply";
 import { APPLY_URL, fellowship } from "./config";
 
@@ -159,16 +159,17 @@ const TIMELINE = [
 
 /* ---------------------------------------------------------------- sections */
 
+/** The first screen renders visible at once (no scroll reveal), so the heading paints as soon as its font does. */
 function Hero() {
   return (
     <section aria-labelledby="fellowship-title" className="bg-ac-warm px-6 pb-24 pt-10 sm:px-10 md:pb-32 md:pt-14">
       <div className="mx-auto max-w-[1180px]">
-        <Reveal className="flex flex-wrap items-baseline justify-between gap-3 border-b border-ac-charcoal/15 pb-5">
+        <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-ac-charcoal/15 pb-5">
           <p className="font-label text-[12px] font-semibold uppercase tracking-[0.24em] text-ac-forest">BharatGrid Academy</p>
           <p className="font-label text-[12px] font-medium uppercase tracking-[0.2em] text-ac-slate">Inaugural cohort · 2027</p>
-        </Reveal>
+        </div>
 
-        <Reveal delay={60}>
+        <div>
           <h1
             id="fellowship-title"
             className="mt-12 font-display text-[clamp(2.75rem,11vw,8.6rem)] md:text-[clamp(3.3rem,9.6vw,8.6rem)] font-medium leading-[0.92] tracking-[-0.02em] text-ac-charcoal md:mt-14"
@@ -177,32 +178,32 @@ function Hero() {
             <br />
             Fellowship <span className="italic text-ac-emerald">’27</span>
           </h1>
-        </Reveal>
+        </div>
 
         <div className="mt-12 grid gap-16 md:mt-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
-            <Reveal delay={140}>
+            <div>
               <p className="max-w-[38rem] text-[clamp(1.12rem,1.5vw,1.3rem)] leading-[1.65] text-ac-charcoal/85">
                 An intensive 24-week fellowship that prepares ten exceptional people for careers in business, marketing, sales and
                 business development: rigorous professional training first, then real work inside an operating company.
               </p>
-            </Reveal>
-            <Reveal delay={200} className="mt-10">
+            </div>
+            <div className="mt-10">
               <div className="flex flex-wrap items-center gap-4">
                 <ApplyButton className="w-full sm:w-auto" />
                 <BrochureButton className="w-full sm:w-auto" />
               </div>
               <Deadline className="mt-6" />
-            </Reveal>
-            <Reveal delay={260}>
+            </div>
+            <div>
               <p className="mt-10 max-w-[38rem] border-t border-ac-charcoal/12 pt-6 text-[16px] leading-[1.7] text-ac-slate">
                 Not an internship, and not an online certificate. A selective pathway from training to employment, designed to lead to
                 full-time roles at BharatGrid for members who successfully complete it.
               </p>
-            </Reveal>
+            </div>
           </div>
 
-          <Reveal as="div" delay={260} className="lg:col-span-5 lg:pl-8">
+          <div className="lg:col-span-5 lg:pl-8">
             <aside aria-label="The fellowship at a glance" className="border-t-2 border-ac-charcoal">
               <p className="pt-5 font-label text-[12px] font-semibold uppercase tracking-[0.2em] text-ac-charcoal">At a glance</p>
               <dl className="mt-4">
@@ -214,7 +215,7 @@ function Hero() {
                 ))}
               </dl>
             </aside>
-          </Reveal>
+          </div>
         </div>
       </div>
     </section>
@@ -615,14 +616,18 @@ const structuredData = () =>
   JSON.stringify({
     "@context": "https://schema.org",
     "@type": "EducationalOccupationalProgram",
+    "@id": `${fellowship.url}#programme`,
     name: fellowship.name.replace("’", "'"),
     description:
       "An intensive 24-week professional fellowship by BharatGrid Academy: 12 weeks of professional training followed by 12 weeks of corporate experience in marketing or sales, with full-time roles at BharatGrid for members who successfully complete it.",
     url: fellowship.url,
+    // the same Academy and company the site-wide graph in <head> describes (src/site/schema.ts)
     provider: {
-      "@type": "Organization",
+      "@type": "EducationalOrganization",
+      "@id": IDS.academy,
       name: "BharatGrid Academy",
-      parentOrganization: { "@type": "Organization", name: company.legalName, url: company.url },
+      url: fellowship.url,
+      parentOrganization: { "@id": IDS.org, name: company.legalName, url: `${company.url}/` },
     },
     timeToComplete: "P24W",
     startDate: "2027-01-01",
@@ -633,7 +638,6 @@ const structuredData = () =>
   }).replace(/</g, "\\u003c");
 
 export default function Academy() {
-  useReveal();
   return (
     <ApplicationsProvider>
       <a

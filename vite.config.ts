@@ -1,32 +1,37 @@
 import { defineConfig, type Connect, type Plugin } from "vite";
+import { readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
 const page = (name: string) => fileURLToPath(new URL(name, import.meta.url));
+// One HTML entry per page in the project root (index.html, about.html, …); src/site/pages.ts describes each.
+const ENTRIES = readdirSync(page(".")).filter((f) => f.endsWith(".html")).map((f) => f.replace(/\.html$/, ""));
 
-/** /academy is academy.html: Cloudflare and GitHub Pages serve it that way;
- *  this makes the dev and preview servers do the same. */
-function academyRoute(): Plugin {
+/** Cloudflare serves about.html at /about; this makes the dev and preview servers do the same. */
+function cleanUrls(): Plugin {
+  const names = new Set(ENTRIES.filter((n) => n !== "index"));
   const rewrite: Connect.NextHandleFunction = (req, _res, next) => {
-    if (req.url && /^\/academy\/?(\?.*)?$/.test(req.url)) req.url = req.url.replace(/^\/academy\/?/, "/academy.html");
+    const [path, query] = (req.url ?? "/").split("?");
+    const name = path.replace(/^\/|\/$/g, "");
+    if (names.has(name)) req.url = `/${name}.html${query ? `?${query}` : ""}`;
     next();
   };
   return {
-    name: "academy-route",
+    name: "clean-urls",
     configureServer: (server) => void server.middlewares.use(rewrite),
     configurePreviewServer: (server) => void server.middlewares.use(rewrite),
   };
 }
 
-// Relative base: the same build works on the github.io project path and on the custom domain.
-// Two pages, each prerendered (scripts/prerender.mjs): the home page and /academy.
+// Each page is prerendered by scripts/prerender.mjs. The site lives at the domain root, so asset and page URLs
+// are root-relative.
 export default defineConfig({
-  base: "./",
-  plugins: [react(), tailwindcss(), academyRoute()],
+  base: "/",
+  plugins: [react(), tailwindcss(), cleanUrls()],
   build: {
     rollupOptions: {
-      input: { index: page("index.html"), academy: page("academy.html") },
+      input: Object.fromEntries(ENTRIES.map((n) => [n, page(`${n}.html`)])),
     },
   },
 });

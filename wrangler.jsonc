@@ -4,6 +4,10 @@
   "name": "bharatgridsystems",
   "compatibility_date": "2026-10-01",
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    // about.html is served at /about
+    "html_handling": "auto-trailing-slash",
+    // unknown paths get dist/404.html with a real 404 status, instead of an empty response
+    "not_found_handling": "404-page"
   }
 }

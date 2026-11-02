@@ -1,0 +1,22 @@
+# Permanent redirects to each page's one canonical URL (Cloudflare's own trailing-slash redirects are temporary).
+/index.html            /              301
+/about.html            /about         301
+/about/                /about         301
+/engineering.html      /engineering   301
+/engineering/          /engineering   301
+/work.html             /work          301
+/work/                 /work          301
+/academy.html          /academy       301
+/academy/              /academy       301
+/contact.html          /contact       301
+/contact/              /contact       301
+
+# Plain-language addresses people are likely to type or link to.
+/research              /engineering   301
+/engineering-research  /engineering   301
+/products              /work          301
+/businesses            /work          301
+/resku                 /work#resku    301
+/fellowship            /academy       301
+/business-fellowship   /academy       301
+/brochure              /business-fellowship-27-brochure.pdf  301

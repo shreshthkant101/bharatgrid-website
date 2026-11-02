@@ -2,18 +2,25 @@
 
 @theme {
   --font-sans: "Inter Variable", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
   --font-deva: "Kohinoor Devanagari", "Noto Sans Devanagari", "Nirmala UI", "Mangal", sans-serif;
-  --color-ink: #1d1d1f;
-  --color-body: #48484d;
-  --color-muted: #5f5f64;
-  --color-line: #e3e3e8;
-  --color-mist: #f5f5f7;
-  --color-navy: #0b1b4d;
-  --color-navy-hover: #15286a;
-  --color-navy-soft: #e9ecf4;
+
+  /* BharatGrid Systems: warm paper, charcoal ink, saffron used sparingly */
+  --color-paper: #f8f6f1;
+  --color-paper-2: #efebe3;
+  --color-ink: #151413;
+  --color-body: #46433e;
+  --color-muted: #6a665e;
+  --color-line: #e2ddd3;
+  --color-line-strong: #c9c2b4;
+  --color-accent: #b4490f; /* saffron, dark enough for text on paper (4.98:1) */
+  --color-night: #151413;
+  --color-night-dim: #b9b4aa;
   --color-resku: #005a5a;
-  --color-resku-soft: #e9f3f1;
+
+  /* The letterhead tricolour, used in the wordmark's underline */
   --color-saffron: #f26a21;
+  --color-navy: #0b1b4d;
   --color-green: #0b6b3a;
 
   /* BharatGrid Academy (/academy) */
@@ -32,29 +39,34 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 72px;
+    scroll-padding-top: 88px;
     -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
   }
   body {
-    @apply bg-white font-sans text-ink antialiased;
+    @apply bg-paper font-sans text-ink antialiased;
     font-feature-settings: "cv11", "ss01";
   }
   ::selection {
-    @apply bg-navy text-white;
+    @apply bg-ink text-paper;
   }
   :focus-visible {
-    @apply rounded-sm outline-2 outline-offset-4 outline-navy;
+    @apply rounded-sm outline-2 outline-offset-4 outline-accent;
+  }
+  /* long addresses may break anywhere rather than push a narrow column off the screen */
+  a[href^="mailto:"] {
+    overflow-wrap: anywhere;
   }
 }
 
-/* Scroll reveal: hidden only when JS is running and motion is allowed. */
+/* Scroll reveal: hidden only when JS is running and motion is allowed.
+   Nothing in a page's first screen uses it, so it never delays the main content. */
 .js [data-reveal] {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(12px);
   transition:
-    opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
   transition-delay: var(--delay, 0ms);
 }
 .js [data-reveal].is-in,
@@ -62,14 +74,30 @@
   opacity: 1;
   transform: none;
 }
-/* Photos settle from a slight zoom as they come into view. */
-.js [data-reveal] > div > .photo {
-  transform: scale(1.06);
-  transition: transform 1.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+/* The diagram draws its connections in once it is on screen. */
+.js [data-reveal] .draw {
+  stroke-dasharray: var(--len) var(--len);
+  stroke-dashoffset: var(--len);
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.3, 0.6, 0.2, 1) var(--d, 0ms);
 }
-.js [data-reveal].is-in > div > .photo,
-.reveal-all [data-reveal] > div > .photo {
-  transform: none;
+.js [data-reveal].is-in .draw,
+.reveal-all .draw {
+  stroke-dashoffset: 0;
+}
+.js [data-reveal] .fade {
+  opacity: 0;
+  transition: opacity 0.9s ease var(--d, 0ms);
+}
+.js [data-reveal].is-in .fade,
+.reveal-all .fade {
+  opacity: 1;
+}
+
+/* A fine dot grid: the site's one texture */
+.dot-grid {
+  background-image: radial-gradient(circle at 1px 1px, rgb(21 20 19 / 0.12) 1px, transparent 0);
+  background-size: 22px 22px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -77,9 +105,11 @@
     scroll-behavior: auto;
   }
   .js [data-reveal],
-  .js [data-reveal] > div > .photo {
+  .js [data-reveal] .draw,
+  .js [data-reveal] .fade {
     opacity: 1;
     transform: none;
     transition: none;
+    stroke-dashoffset: 0;
   }
 }
