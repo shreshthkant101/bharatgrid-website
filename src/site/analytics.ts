@@ -2,7 +2,7 @@
 // is in the script URL on every page). With no ID, nothing loads.
 import { APPLY_URL } from "../academy/config";
 
-export const CLARITY_ID = "";
+export const CLARITY_ID = "z7sb2i1vbh";
 
 const OFF_KEY = "bg-analytics-off";
 
