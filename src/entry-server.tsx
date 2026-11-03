@@ -26,6 +26,8 @@ const VIEWS: Record<Page, () => ReactElement> = {
 export const pages = PAGES.map((meta) => ({
   file: meta.file,
   page: meta.page,
+  title: meta.title,
+  description: meta.description,
   head: head(meta),
   html: () => renderToString(<StrictMode>{VIEWS[meta.page]()}</StrictMode>),
 }));

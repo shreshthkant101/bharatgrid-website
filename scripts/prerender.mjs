@@ -39,6 +39,10 @@ for (const p of pages) {
   for (const [what, n] of Object.entries(checks)) {
     if (n !== 1) throw new Error(`${p.file}: expected one ${what}, found ${n}`);
   }
+  // ...short enough that search results show them whole.
+  for (const [what, text, max] of [["title", p.title, 60], ["description", p.description, 155]]) {
+    if ([...text].length > max) throw new Error(`${p.file}: ${what} is ${[...text].length} characters (max ${max})`);
+  }
   await writeFile(file, html);
   console.log(`prerendered dist/${p.file}`);
 }

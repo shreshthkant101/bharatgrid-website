@@ -120,14 +120,14 @@ previews, and long-cache headers on hashed assets.
 
 | URL | Search intent | Title | H1 |
 |---|---|---|---|
-| `/` | Navigational: who is BharatGrid Systems | BharatGrid Systems \| Research-driven software and AI/ML engineering in India | Engineering the next generation of India's digital infrastructure. |
-| `/about` | Navigational / informational: about, legal identity, location, is it a government company | About BharatGrid Systems \| An Indian software and AI/ML engineering company | An engineering company, built for the long term. |
-| `/engineering` | Informational: what BharatGrid builds and researches; capability queries | Engineering & Research: applied AI/ML and systems \| BharatGrid Systems | Research-driven engineering, grounded in real products. |
-| `/work` | Navigational / commercial: Resku, Resku Business, Academy | Our Work: Resku, Resku Business and BharatGrid Academy \| BharatGrid Systems | Products where our engineering meets real use. |
+| `/` | Navigational: who is BharatGrid Systems | BharatGrid Systems \| Software and AI/ML engineering in India | Engineering the next generation of India's digital infrastructure. |
+| `/about` | Navigational / informational: about, legal identity, location, is it a government company | About BharatGrid Systems \| Indian AI/ML engineering company | An engineering company, built for the long term. |
+| `/engineering` | Informational: what BharatGrid builds and researches; capability queries | Engineering & Research: applied AI/ML \| BharatGrid Systems | Research-driven engineering, grounded in real products. |
+| `/work` | Navigational / commercial: Resku, Resku Business, Academy | Our Work: Resku and Resku Business \| BharatGrid Systems | Products where our engineering meets real use. |
 | `/academy` | Navigational / transactional: BharatGrid Academy, Business Fellowship, how to apply | Business Fellowship '27 · BharatGrid Academy (unchanged) | Business Fellowship '27 |
-| `/contact` | Navigational: contact, address, phone, email | Contact BharatGrid Systems \| Enquiries, partnerships and support | Get in touch. |
+| `/contact` | Navigational: contact, address, phone, email | Contact BharatGrid Systems \| Enquiries and support | Get in touch. |
 
-Meta descriptions are in `src/site/pages.ts`; each is unique and states plainly what the page contains.
+Meta descriptions are in `src/site/pages.ts`; each is unique and states plainly what the page contains. Titles stay within 60 characters and descriptions within 155, so results show them whole; the build fails otherwise.
 
 **Cannibalisation rules** (keep these when adding pages):
 - Home owns the brand and the one-line identity. `/about` owns company facts and "who is" questions.
