@@ -26,7 +26,7 @@ export const company = {
 
 export const telHref = `tel:${company.phone.replace(/[^\d+]/g, "")}`;
 
-export type Page = "home" | "about" | "engineering" | "work" | "academy" | "contact" | "notfound";
+export type Page = "home" | "about" | "engineering" | "work" | "academy" | "contact" | "privacy" | "notfound";
 
 /** The site's sections, in navigation order. Root-relative: the site lives at the domain root. */
 export const NAV: { href: string; label: string; short?: string; page: Page }[] = [

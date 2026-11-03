@@ -95,6 +95,11 @@ export function Footer({ page = "home" }: { page?: Page }) {
             <p>
               Registered as {company.legalName} in {company.registeredYear}.
             </p>
+            <p>
+              <a href="/privacy" aria-current={page === "privacy" ? "page" : undefined} className="underline decoration-line-strong underline-offset-4 transition-colors hover:text-ink">
+                Privacy notice
+              </a>
+            </p>
           </div>
           <p lang="hi" className="font-deva text-[15px] tracking-[0.02em] text-ink/60" title="The nation's interest above all">
             {company.motto}

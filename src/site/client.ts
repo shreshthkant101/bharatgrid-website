@@ -1,8 +1,9 @@
 // The corporate pages' only script (their HTML is prerendered and ships no React): the font, the stylesheet,
 // the mobile menu, the header's scrolled border, scroll reveals, links from the old one-page site, and
-// closing-date text. /academy loads it too, beside its React app.
+// closing-date text, and analytics (analytics.ts). /academy loads it too, beside its React app.
 import "@fontsource-variable/inter";
 import "../index.css";
+import { analyticsControl, startAnalytics } from "./analytics";
 
 declare global {
   interface Window {
@@ -82,5 +83,7 @@ legacyAnchors();
 header();
 reveal();
 deadlines();
+analyticsControl();
+startAnalytics();
 
 export {};

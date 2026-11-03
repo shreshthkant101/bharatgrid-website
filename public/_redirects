@@ -10,6 +10,8 @@
 /academy/              /academy       301
 /contact.html          /contact       301
 /contact/              /contact       301
+/privacy.html          /privacy       301
+/privacy/              /privacy       301
 
 # Plain-language addresses people are likely to type or link to.
 /research              /engineering   301
@@ -19,4 +21,5 @@
 /resku                 /work#resku    301
 /fellowship            /academy       301
 /business-fellowship   /academy       301
+/privacy-policy        /privacy       301
 /brochure              /business-fellowship-27-brochure.pdf  301

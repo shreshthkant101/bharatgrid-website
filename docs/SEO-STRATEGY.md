@@ -219,7 +219,7 @@ Rules:
 4. Search Console: add a **Domain property** (DNS TXT in Cloudflare), submit `https://bharatgridsystems.com/sitemap.xml`,
    and request indexing for the six URLs.
 5. Bing Webmaster Tools: import from Search Console.
-6. Cloudflare Web Analytics: free and cookieless, so no consent banner is needed.
+6. Microsoft Clarity (3 Nov): put the project ID in `CLARITY_ID` (`src/site/analytics.ts`). It loads only on bharatgridsystems.com, after the page is idle, and not for visitors who opt out at /privacy or send Global Privacy Control. Disclosed at /privacy, as Clarity's terms require. Leave Clarity's masking on Balanced and its Microsoft Advertising integration off: /privacy says Clarity isn't used for advertising.
 7. Rich Results Test on `/` and `/academy`.
 
 **Days 8–30**
@@ -252,8 +252,8 @@ Rules:
 | Non-branded impressions and clicks grow after notes are published | GSC Performance, branded queries filtered out | 0 notes today |
 | Qualified queries | GSC queries per page | — |
 | Core Web Vitals "Good" | GSC CWV report (needs field data; low-traffic sites may show none) | Lab: LCP 0.5–1.5 s, CLS ≤ 0.008 |
-| Academy applications from the website | Add "How did you hear about us?" to the Google Form, or a separate pre-filled form link for the site | Not tracked today |
-| Partnership and contact enquiries | Tally of emails that mention the website; Web Analytics visits to `/contact` | Not tracked today |
+| Academy applications from the website | Clarity event `apply_click` (and `brochure_download`); add "How did you hear about us?" to the Google Form for completed applications | Not tracked before 3 Nov |
+| Partnership and contact enquiries | Clarity events `email_click` and `phone_click`, visits to `/contact`; tally of emails that mention the website | Not tracked before 3 Nov |
 
 ---
 

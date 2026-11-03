@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Engineering from "./pages/Engineering";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import Privacy from "./pages/Privacy";
 import Work from "./pages/Work";
 import { head } from "./site/head";
 import { PAGES } from "./site/pages";
@@ -19,6 +20,7 @@ const VIEWS: Record<Page, () => ReactElement> = {
   work: () => <Work />,
   academy: () => <Academy />,
   contact: () => <Contact />,
+  privacy: () => <Privacy />,
   notfound: () => <NotFound />,
 };
 

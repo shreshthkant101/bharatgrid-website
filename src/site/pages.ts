@@ -88,6 +88,17 @@ export const PAGES: PageMeta[] = [
     og: { image: "/og/contact.jpg", alt: "Contact BharatGrid Systems" },
   },
   {
+    page: "privacy",
+    file: "privacy.html",
+    path: "/privacy",
+    title: "Privacy notice | BharatGrid Systems",
+    description:
+      "How bharatgridsystems.com handles your information: Microsoft Clarity analytics, its cookies, hosting, Academy applications, and how to turn analytics off.",
+    crumb: "Privacy",
+    type: "WebPage",
+    og: { image: "/og-image.jpg", alt: "BharatGrid Systems" },
+  },
+  {
     page: "notfound",
     file: "404.html",
     path: "/404",
