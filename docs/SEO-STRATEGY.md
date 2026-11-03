@@ -97,7 +97,7 @@ previews, and long-cache headers on hashed assets.
   - **the page itself:** AboutPage, ContactPage, CollectionPage or WebPage;
   - **BreadcrumbList.**
   - The Academy's EducationalOccupationalProgram now references the same Academy and Organization by `@id`.
-  - No `sameAs`: no verified profiles exist yet (§8).
+  - `sameAs`: the company's LinkedIn and Instagram (`company.social` in `src/company.ts`), also linked from the footer and /contact.
 - `sitemap.xml` is generated from the registry with `lastmod`; the 404 page is excluded.
 - **Copies on other hosts are kept out of search results:**
   - `X-Robots-Tag: noindex` on workers.dev (`public/_headers`);
@@ -223,8 +223,8 @@ Rules:
 7. Rich Results Test on `/` and `/academy`.
 
 **Days 8–30**
-- Create a **LinkedIn company page** "BharatGrid Systems" with the same one-line description and the website. Then add
-  it, and the Academy's Instagram, to `sameAs` (one line in `src/site/schema.ts`).
+- Done 3 Nov: LinkedIn (linkedin.com/company/bharatgrid) and Instagram (@bharatgridsystems) are in `sameAs`. Give both
+  profiles the same one-line description and the website link, so the three agree on who BharatGrid Systems is.
 - On reskuapp.com, add "Resku is built by BharatGrid Systems" with a link (I can do this in `~/Desktop/resqu_website`).
 - Founders' and team members' profiles should name BharatGrid Systems and link to the site.
 - Legitimate listings only: Startup India / DPIIT recognition if eligible, Crunchbase, and university placement cells
@@ -270,7 +270,7 @@ Rules:
 4. **Search Console:** Domain property via DNS TXT, sitemap submission and indexing requests.
    **Bing:** import from Search Console.
 5. **Analytics:** Cloudflare → Web Analytics → enable for bharatgridsystems.com (automatic setup on proxied zones).
-6. **Profiles:** create the LinkedIn company page; send me its URL and the Academy Instagram URL for `sameAs`.
+6. **Profiles:** done (LinkedIn and Instagram linked). Make sure both bios link to bharatgridsystems.com.
 7. **Editorial approval:**
    - The engineering descriptions on `/engineering` and `/work` are public descriptions of internal work.
    - The draft note in `docs/insights/drafts/` needs sign-off before publishing.

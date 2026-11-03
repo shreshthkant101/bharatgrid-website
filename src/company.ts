@@ -17,6 +17,11 @@ export const company = {
   motto: "राष्ट्रहित सर्वोपरि",
   url: "https://bharatgridsystems.com",
   reskuUrl: "https://reskuapp.com",
+  /** Official profiles: the footer, /contact and the Organization's sameAs. */
+  social: [
+    { name: "LinkedIn", url: "https://www.linkedin.com/company/bharatgrid" },
+    { name: "Instagram", url: "https://www.instagram.com/bharatgridsystems/" },
+  ],
 };
 
 export const telHref = `tel:${company.phone.replace(/[^\d+]/g, "")}`;

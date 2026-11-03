@@ -50,6 +50,7 @@ const organization = () => ({
   ],
   brand: [{ "@type": "Brand", name: "Resku", url: company.reskuUrl }],
   subOrganization: { "@id": IDS.academy },
+  sameAs: company.social.map((s) => s.url),
 });
 
 const website = () => ({

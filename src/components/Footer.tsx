@@ -4,9 +4,9 @@ import { Container, External, Logo } from "./ui";
 
 const link = "text-[14px] text-body transition-colors hover:text-ink";
 
-function Column({ title, children }: { title: string; children: ReactNode }) {
+function Column({ title, children, className }: { title: string; children: ReactNode; className?: string }) {
   return (
-    <div>
+    <div className={className}>
       <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-muted">{title}</p>
       <ul className="mt-5 space-y-3">{children}</ul>
     </div>
@@ -17,8 +17,8 @@ export function Footer({ page = "home" }: { page?: Page }) {
   return (
     <footer className="border-t border-line bg-paper pb-12 pt-20 md:pt-24">
       <Container>
-        <div className="grid gap-14 md:grid-cols-12 md:gap-10">
-          <div className="md:col-span-5">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
             <a href="/" aria-label="BharatGrid Systems home" className="inline-block">
               <Logo />
             </a>
@@ -26,7 +26,7 @@ export function Footer({ page = "home" }: { page?: Page }) {
               An Indian software and AI/ML engineering company, building research-driven products and intelligent systems.
             </p>
           </div>
-          <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-3 md:col-span-7">
+          <nav aria-label="Footer" className="grid grid-cols-2 gap-10 sm:grid-cols-[1fr_1fr_auto] lg:col-span-7">
             <Column title="Company">
               {NAV.filter((i) => i.page !== "academy").map((item) => (
                 <li key={item.href}>
@@ -59,7 +59,8 @@ export function Footer({ page = "home" }: { page?: Page }) {
                 </a>
               </li>
             </Column>
-            <Column title="Reach us">
+            {/* Full width on phones and as wide as its email addresses above that, so they never break mid-word. */}
+            <Column title="Reach us" className="col-span-2 sm:col-span-1">
               <li>
                 <a href={`mailto:${company.email}`} className={link}>
                   {company.email}
@@ -75,6 +76,14 @@ export function Footer({ page = "home" }: { page?: Page }) {
                   {company.grievanceEmail}
                 </a>
               </li>
+              {company.social.map((s) => (
+                <li key={s.url}>
+                  <a href={s.url} target="_blank" rel="noopener me" className={`${link} inline-flex items-center gap-1.5`}>
+                    {s.name} <External />
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </li>
+              ))}
             </Column>
           </nav>
         </div>

@@ -115,6 +115,17 @@ export default function Contact() {
                   </a>
                 </dd>
               </div>
+              <div>
+                <dt className="text-[12px] font-semibold uppercase tracking-[0.14em] text-muted">Follow us</dt>
+                <dd className="mt-3 flex flex-wrap gap-x-6 text-[clamp(1.1rem,1.6vw,1.3rem)] leading-[1.6] text-ink">
+                  {company.social.map((s) => (
+                    <a key={s.url} href={s.url} target="_blank" rel="noopener me" className={link}>
+                      {s.name}
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  ))}
+                </dd>
+              </div>
             </dl>
           </Reveal>
         </Container>
