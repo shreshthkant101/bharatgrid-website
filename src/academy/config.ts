@@ -2,7 +2,7 @@
 // Change the form or the deadline here; every button on /academy follows.
 
 /** The application form (Google Forms handles every submission). */
-export const APPLY_URL = "https://forms.gle/5BiLtPLmQt1CoPUi9";
+export const APPLY_URL = "https://forms.gle/4FXc2Mk3tYWS9iAo9";
 
 /** Applications close at 11:59 PM IST on 30 November 2026 (IST is UTC+05:30).
  *  After this instant every Apply button becomes an "Applications closed" state. */
