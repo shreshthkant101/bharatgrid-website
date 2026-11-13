@@ -46,14 +46,14 @@ const Rule = ({ className = "" }: { className?: string }) => <div aria-hidden="t
 
 /* ---------------------------------------------------------------- content */
 
-const GLANCE: [string, ReactNode][] = [
-  ["Organiser", <>BharatGrid Academy, {fellowship.company}</>],
-  ["Duration", <>24 weeks, January – June 2027</>],
-  ["Programme begins", fellowship.begins],
-  ["Intake", <>Ten members</>],
-  ["Selection", <>Interview only. No CV required.</>],
-  ["Outcome", <>Designed to lead to full-time roles at BharatGrid on successful completion</>],
+/** The hero explains the whole programme on its own: what happens, in what order, and the facts people ask first. */
+const STEPS = [
+  { when: "Weeks 1–12", title: "We train you", text: "Marketing, sales and business, taught in person by the BharatGrid team." },
+  { when: "Weeks 13–24", title: "You work with us", text: "Real campaigns and real clients, inside our marketing and sales teams." },
+  { when: "After week 24", title: "You join the team", text: "Perform well, and you’re hired full-time at BharatGrid." },
 ];
+
+const FACTS = ["Free: no fee, no deposit", "In person, at our Mohali office", "Starts 1 January 2027", "10 seats", "Interview only. No CV.", "Open to anyone"];
 
 const NUMBERS: { value: ReactNode; label: string }[] = [
   {
@@ -159,64 +159,66 @@ const TIMELINE = [
 
 /* ---------------------------------------------------------------- sections */
 
-/** The first screen renders visible at once (no scroll reveal), so the heading paints as soon as its font does. */
+/** The first screen renders visible at once (no scroll reveal), so the heading paints as soon as its font does. It has
+ *  to explain the programme by itself: most visitors arrive from Instagram on a phone and read nothing below it. */
 function Hero() {
   return (
-    <section aria-labelledby="fellowship-title" className="bg-ac-warm px-6 pb-24 pt-10 sm:px-10 md:pb-32 md:pt-14">
+    <section aria-labelledby="fellowship-title" className="bg-ac-warm px-6 pb-20 pt-10 sm:px-10 md:pb-28 md:pt-14">
       <div className="mx-auto max-w-[1180px]">
         <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-ac-charcoal/15 pb-5">
           <p className="font-label text-[12px] font-semibold uppercase tracking-[0.24em] text-ac-forest">BharatGrid Academy</p>
-          <p className="font-label text-[12px] font-medium uppercase tracking-[0.2em] text-ac-slate">Inaugural cohort · 2027</p>
+          <p className="font-label text-[12px] font-medium uppercase tracking-[0.2em] text-ac-slate">
+            Business Fellowship <span className="text-ac-emerald">’27</span>
+          </p>
         </div>
 
-        <div>
-          <h1
-            id="fellowship-title"
-            className="mt-12 font-display text-[clamp(2.75rem,11vw,8.6rem)] md:text-[clamp(3.3rem,9.6vw,8.6rem)] font-medium leading-[0.92] tracking-[-0.02em] text-ac-charcoal md:mt-14"
-          >
-            Business
-            <br />
-            Fellowship <span className="italic text-ac-emerald">’27</span>
-          </h1>
-        </div>
-
-        <div className="mt-12 grid gap-16 md:mt-14 lg:grid-cols-12 lg:gap-12">
+        <div className="mt-10 grid gap-14 md:mt-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-7">
-            <div>
-              <p className="max-w-[38rem] text-[clamp(1.12rem,1.5vw,1.3rem)] leading-[1.65] text-ac-charcoal/85">
-                An intensive 24-week fellowship that prepares ten exceptional people for careers in business, marketing, sales and
-                business development: rigorous professional training first, then real work inside an operating company.
-              </p>
+            <h1
+              id="fellowship-title"
+              className="font-display text-[clamp(2.5rem,8.4vw,4.4rem)] font-medium leading-[1.02] tracking-[-0.02em] text-ac-charcoal"
+            >
+              We train you for 24 weeks. <span className="italic text-ac-emerald">Then you join our team.</span>
+            </h1>
+            <p className="mt-7 max-w-[36rem] text-[clamp(1.08rem,1.5vw,1.25rem)] leading-[1.65] text-ac-charcoal/85">
+              A free, in-person programme in Mohali for 10 people who want a career in marketing and sales: 12 weeks of training, then 12 weeks of real
+              work inside BharatGrid. Perform well, and you’re hired full-time.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <ApplyButton className="w-full sm:w-auto" />
+              <BrochureButton className="w-full sm:w-auto" />
             </div>
-            <div className="mt-10">
-              <div className="flex flex-wrap items-center gap-4">
-                <ApplyButton className="w-full sm:w-auto" />
-                <BrochureButton className="w-full sm:w-auto" />
-              </div>
-              <Deadline className="mt-6" />
-            </div>
-            <div>
-              <p className="mt-10 max-w-[38rem] border-t border-ac-charcoal/12 pt-6 text-[16px] leading-[1.7] text-ac-slate">
-                Not an internship, and not an online certificate. A selective pathway from training to employment, designed to lead to
-                full-time roles at BharatGrid for members who successfully complete it.
-              </p>
-            </div>
+            <Deadline className="mt-6" />
           </div>
 
           <div className="lg:col-span-5 lg:pl-8">
-            <aside aria-label="The fellowship at a glance" className="border-t-2 border-ac-charcoal">
-              <p className="pt-5 font-label text-[12px] font-semibold uppercase tracking-[0.2em] text-ac-charcoal">At a glance</p>
-              <dl className="mt-4">
-                {GLANCE.map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[8.5rem_1fr] gap-4 border-b border-ac-charcoal/12 py-4 text-[15px] leading-snug">
-                    <dt className="font-label text-[11.5px] font-semibold uppercase tracking-[0.14em] text-ac-slate pt-[3px]">{k}</dt>
-                    <dd className="text-ac-charcoal">{v}</dd>
+            <h2 className="border-t-2 border-ac-charcoal pt-5 font-label text-[12px] font-semibold uppercase tracking-[0.2em] text-ac-charcoal">
+              How it works
+            </h2>
+            <ol className="mt-2">
+              {STEPS.map((step, i) => (
+                <li key={step.title} className="grid grid-cols-[2.25rem_1fr] gap-x-3 border-b border-ac-charcoal/12 py-5">
+                  <span aria-hidden="true" className="font-display text-[1.6rem] leading-none text-ac-crimson">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <p className="font-label text-[12px] font-semibold uppercase tracking-[0.14em] text-ac-slate">{step.when}</p>
+                    <p className="mt-1.5 text-[1.15rem] font-medium leading-snug text-ac-charcoal">{step.title}</p>
+                    <p className="mt-1 text-[15px] leading-[1.6] text-ac-charcoal/75">{step.text}</p>
                   </div>
-                ))}
-              </dl>
-            </aside>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
+
+        <ul aria-label="Key facts" className="mt-14 flex flex-wrap gap-2.5 md:mt-16">
+          {FACTS.map((fact) => (
+            <li key={fact} className="rounded-full border border-ac-charcoal/15 bg-white px-4 py-2 text-[14px] text-ac-charcoal">
+              {fact}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
